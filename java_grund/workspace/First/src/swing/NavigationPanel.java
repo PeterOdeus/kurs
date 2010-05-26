@@ -3,6 +3,7 @@ package swing;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -19,7 +20,7 @@ public class NavigationPanel extends JPanel {
 		textField = new JTextField("A TEXTFIELD");
 		this.add(textField);
 		
-		button = new JButton("Go  ahead ");
+		button = new JButton("Go");
 		this.add(button);
 		
 		setupEventHandling();
@@ -38,7 +39,18 @@ public class NavigationPanel extends JPanel {
 			}			
 		});
 		button.addMouseListener(new MouseAdapter(){
-			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				executeButtonLogic();
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				button.setText("whoaaa");
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button.setText("Go");
+			}
 		});
 	}
 }
