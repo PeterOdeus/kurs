@@ -26,6 +26,10 @@ public class Övning22 extends JFrame {
 		CenterPanel centerPanel = new CenterPanel(phoneBookController);		
 		this.add(centerPanel, BorderLayout.CENTER);
 		
+		//SOUTH
+		SouthPanel southPanel = new SouthPanel(phoneBookController);
+		this.add(southPanel, BorderLayout.SOUTH);
+		
 		this.setVisible(true);
 	}
 	/**
