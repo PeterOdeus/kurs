@@ -10,8 +10,10 @@ public class PhoneBookController {
 	
 	private PhoneBook _phoneBook = null;
 	private List<SearchResultHandler> _searchResultTargets = null;
+	private DB db = null;
 	
 	public PhoneBookController(PhoneBook phoneBook){
+		db = new DB();
 		this._phoneBook = phoneBook;
 	}
 	
@@ -23,14 +25,18 @@ public class PhoneBookController {
 	}
 	
 	public void findItemByName(String name){
-		Contact[] contacts = this._phoneBook.getContactsByName(name);
-		ArrayList<String> stringList = new ArrayList<String>();
-		for(Contact contact : contacts){
+		List<Contact> contactList = db.select(name);
+		List<String> stringList = new ArrayList<String>();
+		for(Contact contact : contactList){
 			stringList.add(contact.getName() + " : " + contact.getPhoneNumber() + "\n");
 		}
 		for(SearchResultHandler searchHandler : _searchResultTargets){
 			searchHandler.handleSearchResults(stringList);
 		}
+	}
+	
+	public void insertContact(Contact contact){
+		db.insert(contact);
 	}
 
 }

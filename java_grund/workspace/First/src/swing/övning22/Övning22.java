@@ -1,6 +1,8 @@
 package swing.övning22;
 
 import java.awt.BorderLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +15,14 @@ public class Övning22 extends JFrame {
 	public Övning22(){
 		this.setLayout(new BorderLayout());
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		this.addWindowStateListener(new WindowAdapter(){
+			@Override
+			public void windowClosing(WindowEvent e) {
+				// TODO Auto-generated method stub
+				super.windowClosing(e);
+			}
+		});
 		this.setSize(400, 300);
 		
 		//NORTH
